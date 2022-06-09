@@ -1,21 +1,21 @@
-package and5.abrar.challenge_ch8
+package and5.abrar.challenge_ch8.view
 
+import and5.abrar.challenge_ch8.R
+import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
-import android.content.Intent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 class RegisterLayout : ComponentActivity() {
@@ -49,7 +49,6 @@ fun Greeting2(name: String) {
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(R.drawable.ic_launcher_background), contentDescription = "ini gambar" )
         TextField(value = nama, onValueChange = { nama = it }, label = { Text("nama") })
         TextField(value = email, onValueChange = { email = it }, label = { Text("email") })
         TextField(value = username, onValueChange = { username = it }, label = { Text("username") })

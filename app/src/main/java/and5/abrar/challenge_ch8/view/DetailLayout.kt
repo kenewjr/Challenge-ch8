@@ -1,27 +1,30 @@
-package and5.abrar.challenge_ch8
+package and5.abrar.challenge_ch8.view
 
+import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import and5.abrar.challenge_ch8.model.RespondAnimeItem
+import androidx.compose.ui.text.style.TextAlign
+import coil.compose.rememberImagePainter
+
 
 class DetailLayout : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val detailAnime = intent.getParcelableExtra<RespondAnimeItem>("detailanime") as RespondAnimeItem
         setContent {
             Challengech8Theme {
                 // A surface container using the 'background' color from the theme
@@ -29,7 +32,7 @@ class DetailLayout : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting4("Android")
+                    Greeting4(detailAnime)
                 }
             }
         }
@@ -37,29 +40,39 @@ class DetailLayout : ComponentActivity() {
 }
 
 @Composable
-fun Greeting4(name: String) {
+fun Greeting4(anime : RespondAnimeItem) {
     Column(modifier = Modifier.padding(15.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(painter = painterResource(R.drawable.ic_launcher_background), contentDescription = "ini gambar" )
+        Image(painter = rememberImagePainter(data = anime.link.thumbnail), contentDescription = "ini gambar", modifier = Modifier.width(200.dp).height(150.dp).padding(end = 10.dp))
         Column(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.3f)
+            .fillMaxHeight(0.5f)
             .padding(5.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.Start) {
+
             Text(
-                text = "Judul : " ,
+                text = "Judul : ${anime.title}",
                 color = Color.DarkGray,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.Normal
             )
+
             Text(
-                text = "Jadwal : " ,
+                text = "Genre : ${anime.genre}",
                 color = Color.DarkGray,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.Normal
             )
+
             Text(
-                text = "Sutradara : " ,
+                text = "Jadwal : ${anime.release}",
                 color = Color.DarkGray,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.Normal
             )
+
+            Text(
+                text = "Link : ${anime.link.url}",
+                color = Color.DarkGray,
+                fontWeight = FontWeight.Normal
+            )
+
         }
         
     }
@@ -69,6 +82,5 @@ fun Greeting4(name: String) {
 @Composable
 fun DefaultPreview4() {
     Challengech8Theme {
-        Greeting4("Android")
     }
 }
