@@ -1,23 +1,22 @@
 package and5.abrar.challenge_ch8.view
 
+import and5.abrar.challenge_ch8.model.RespondAnimeItem
 import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import and5.abrar.challenge_ch8.model.RespondAnimeItem
-import androidx.compose.ui.text.style.TextAlign
 import coil.compose.rememberImagePainter
 
 
@@ -41,6 +40,7 @@ class DetailLayout : ComponentActivity() {
 
 @Composable
 fun Greeting4(anime : RespondAnimeItem) {
+    val mContext = LocalContext.current
     Column(modifier = Modifier.padding(15.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Image(painter = rememberImagePainter(data = anime.link.thumbnail), contentDescription = "ini gambar", modifier = Modifier.width(200.dp).height(150.dp).padding(end = 10.dp))
         Column(modifier = Modifier
@@ -72,6 +72,15 @@ fun Greeting4(anime : RespondAnimeItem) {
                 color = Color.DarkGray,
                 fontWeight = FontWeight.Normal
             )
+            Button(onClick = {
+                mContext.startActivity(Intent(mContext,LoginLayout::class.java))
+            },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(Color.Gray)
+            ) {
+                Text(text = "LOGOUT")
+            }
 
         }
         

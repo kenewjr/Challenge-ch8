@@ -1,12 +1,10 @@
 package and5.abrar.challenge_ch8.view
 
-import and5.abrar.challenge_ch8.R
 import and5.abrar.challenge_ch8.ui.theme.Challengech8Theme
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -14,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -28,7 +25,7 @@ class RegisterLayout : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting2("Android")
+                    Greeting2()
                 }
             }
         }
@@ -36,7 +33,7 @@ class RegisterLayout : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(name: String) {
+fun Greeting2() {
     val mcontext = LocalContext.current
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -70,6 +67,6 @@ fun Greeting2(name: String) {
 @Composable
 fun DefaultPreview2() {
     Challengech8Theme {
-        Greeting2("Android")
+        Greeting2()
     }
 }
